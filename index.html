@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Sketch!</title>
+  </head>
+  <body>
+    <header class="head">
+      <h1 class="title">
+        Sketch
+      </h1>
+    </header>
+    <div class="sketch-place">
+      <div class="options">
+        <input class="colorPicker" type="color" value="#333333" />
+        <button class="colorfill">Color Fill</button>
+        <button class="rainbow">Random</button>
+        <button class="eraser">Eraser</button>
+        <button class="clear">Reset Canvas</button>
+        <input id="Size" type="range" value="16" min="1" max="100" />
+        <p id="sizeValue">
+          16x16
+        </p>
+      </div>
+      <div class="canvas"></div>
+    </div>
+    <div class="footer">
+      Copyright @ 2022
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
