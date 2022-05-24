@@ -2,15 +2,19 @@ let currentColor = "#333333";
 let currentSize = 8;
 let currentMode = "colorFill";
 let slider = document.querySelector("#Size");
+slider.onchange = (e) => changeSize(e.target.value);
+
 let mouseDown = false;
 document.querySelector(".clear").addEventListener("click", clear);
 document.body.onmousedown = () => (mouseDown = true);
 document.body.onmouseup = () => (mouseDown = false);
 
-slider.onchange = (e) => changeSize(e.target.value);
 document.querySelector(".eraser").onclick = () => setMode("eraser");
 document.querySelector(".colorPicker").oninput = (e) =>
   setColor(e.target.value);
+document.querySelector(".colorfill").onclick = () => setMode("colorFill");
+document.querySelector(".rainbow").onclick = () => setMode("rainbow");
+let grid = document.querySelector(".canvas");
 
 function clear() {
   document.querySelector(".canvas").innerHTML = "";
@@ -28,8 +32,6 @@ function setSize(size) {
 function setMode(mode) {
   currentMode = mode;
 }
-
-let grid = document.querySelector(".canvas");
 
 function changeSize(value) {
   setSize(value);
@@ -61,6 +63,10 @@ function paint(e) {
   if (e.type === "mouseover" && !mouseDown) return;
   if (currentMode === "eraser") {
     e.target.style.backgroundColor = "#fefefe";
+  }
+  if (currentMode === "rainbow") {
+    let rng = Math.floor(Math.random() * 16777215).toString(16);
+    e.target.style.backgroundColor = "#" + rng;
   } else if (currentMode === "colorFill") {
     e.target.style.backgroundColor = currentColor;
   }
